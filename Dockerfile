@@ -1,5 +1,5 @@
 # FROM debian:buster-slim as dqlite-lib-builder 
-FROM ubuntu as dqlite-lib-builder 
+FROM ubuntu:kinetic-20220830 as dqlite-lib-builder 
 ARG DEBIAN_FRONTEND="noninteractive"
 ENV TZ=Europe/London
 ENV LD_LIBRARY_PATH=/usr/local/lib
@@ -32,7 +32,7 @@ RUN go get -d -v ./... && \
     go install -tags libsqlite3 ./cmd/dqlite
 
 # FROM debian:buster-slim 
-FROM ubuntu
+FROM ubuntu:kinetic-20220830
 ARG DEBIAN_FRONTEND="noninteractive"
 ENV TZ=Europe/London
 ENV LD_LIBRARY_PATH=/usr/local/lib
